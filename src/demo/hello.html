@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>hr-vue</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<style>
+
+  .class1 {
+    background: #444;
+    color: #eee;
+  }
+
+</style>
+
+<body>
+<!--<div id="app"></div>-->
+<!--built files will be auto injected -->
+<div id="vue_det">
+  <h1 id="h1">site : {{site}}</h1>
+  <h1 id="h2">url : {{url}}</h1>
+  <h1>{{details()}}</h1>
+
+
+  <!--<div id="app">-->
+  <div id="app">
+    <label for="r1">修改颜色</label><input type="checkbox" v-model="class1" id="r1">
+    <br><br>
+    <div v-bind:class="{'class1': class1}">
+      directiva v-bind:class
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var data = {
+    site: "this is a site",
+    url: "www.google.com",
+    alexa: "10000",
+    class1: false
+  };
+  var vm = new Vue({
+      el: '#vue_det',
+      data: data,
+      methods: {
+        details: function () {
+          return this.site + " - method details！";
+        }
+      }
+    }
+    // ,
+    // {
+    //   el: '#app',
+    //   data: {
+    //     class1: false,
+    //     site: 'site site...'
+    //   }
+    // }
+    );
+
+  document.write(vm.site);
+  document.write("<br>");
+  vm.site = 'site2';
+  document.write(data.site);
+  document.write("<br>");
+
+  document.getElementById('h2').innerHTML = "www.baidu.com";
+  document.write("<br>");
+  document.write("vm url = " + vm.url);
+  document.write("<br>");
+  document.write("data url = " + data.url);
+  document.write("<br>");
+
+  vm.url = 'www.taobao.com';
+  document.write("vm url = " + vm.url);
+  document.write("<br>");
+  document.write("data url = " + data.url);
+
+</script>
+
+</body>
+</html>
